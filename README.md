@@ -9,7 +9,7 @@ This configuration makes it very easy to start with Piwik development or to give
 
 ### Installation
  1. Install [Vagrant](http://www.vagrantup.com) & [VirtualBox](https://www.virtualbox.org)
- 2. Clone this repository
+ 2. Clone this repository and update submodules (`git submodule init && git submodule update`)
  3. Execute the command `vagrant up` within a `vagrant/$box` folder
  4. That's it. It'll take some time when executing this command the first time. It'll download the Vagrant base box once and install all required packages.
  5. Don't forget to update your local hosts file. You have to add "apache.piwik" as well as "nginx.piwik".
