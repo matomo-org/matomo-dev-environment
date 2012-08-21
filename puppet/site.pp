@@ -6,7 +6,7 @@ class { 'piwik':
   directory     => '/var/www/piwik',
   repository    => 'svn',
   version       => 'trunk',
-  db_user       => 'piwik@%',
+  db_user       => 'piwik@localhost',
   db_password   => 'secure',
   log_analytics => true,
 }
