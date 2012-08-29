@@ -1,6 +1,18 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+require "yaml"
+
+_config = YAML.load(File.open(File.join(File.dirname(__FILE__), "../../vagrantconfig.yaml"), File::RDONLY).read)
+
+begin
+    _config.merge!(YAML.load(File.open(File.join(File.dirname(__FILE__), "../../vagrantconfig_local.yaml"), File::RDONLY).read))
+rescue Errno::ENOENT
+
+end
+
+CONF = _config
+
 Vagrant::Config.run do |config|
   config.vm.box = "precise32"
 
@@ -11,7 +23,14 @@ Vagrant::Config.run do |config|
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = "../../puppet"
     puppet.manifest_file  = "site.pp"
-    puppet.module_path  = "../../puppet/modules"
+    puppet.module_path    = "../../puppet/modules"
+    puppet.facter = [
+        ['db_username',  CONF['db_username']],
+        ['db_password',  CONF['db_password']],
+        ['repository',   CONF['repository']],
+        ['svn_username', CONF['svn_password']],
+        ['svn_password', CONF['svn_password']],
+    ]
   end
 
 end

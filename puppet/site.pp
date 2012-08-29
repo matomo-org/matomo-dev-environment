@@ -4,11 +4,13 @@ Exec {
 
 class { 'piwik':
   directory     => '/var/www/piwik',
-  repository    => 'svn',
+  repository    => $repository,
   version       => 'trunk',
-  db_user       => 'piwik@localhost',
-  db_password   => 'secure',
+  db_user       => $db_username,
+  db_password   => $db_password,
   log_analytics => true,
+  svn_username  => $svn_username,
+  svn_password  => $svn_password,
 }
 
 piwik::apache { 'apache.piwik':
