@@ -3,6 +3,8 @@ Piwik Development Environment
 
 This configuration makes it very easy to start with Piwik development or to give Piwik a try in your local environment. It'll setup a virtual machine including everything you need to run Piwik. 
 
+Need more information? Have a look here: http://piwik.org/blog/2012/08/get-started-with-piwik-development-with-puppet-and-vagrant/
+
 ### Available Vagrant Boxes
  * Ubuntu Precise 32
  * Ubuntu Precise 64
