@@ -36,7 +36,7 @@
 	url = git://github.com/puppetlabs/puppetlabs-stdlib
 [submodule "puppet/modules/vcsrepo"]
 	path = puppet/modules/vcsrepo
-	url = git://github.com/openstack-ci/puppet-vcsrepo
+	url = git://github.com/openstack-infra/puppet-vcsrepo
 [submodule "puppet/modules/piwik"]
 	path = puppet/modules/piwik
 	url = git://github.com/piwik/puppet-piwik
