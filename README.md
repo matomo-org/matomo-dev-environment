@@ -36,4 +36,6 @@ Open "http://apache.piwik" or "http://nginx.piwik:8080" after installation. You'
 
 You'll find Piwik here: `/var/www/piwik` 
 
-Let us know if you miss something
+### Issues
+Let us know if something is missing or going wrong. Just create a ticket here: [http://dev.piwik.org/trac](http://dev.piwik.org/trac)
+
