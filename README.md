@@ -34,6 +34,9 @@ Open "http://apache.piwik" or "http://nginx.piwik:8080" after installation. You'
  * Git
  * Composer
 
+### Troubleshooting
+ * If you get file permission errors install VirtualBox Guest Additons: https://github.com/dotless-de/vagrant-vbguest
+
 You'll find Piwik here: `/var/www/piwik` 
 
 ### Issues
