@@ -4,6 +4,6 @@
 
 db_password: secure
 db_username: piwik@localhost 
-repository: svn
+repository: git
 svn_username: false
 svn_password: false
