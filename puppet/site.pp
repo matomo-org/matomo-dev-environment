@@ -27,3 +27,17 @@ piwik::nginx { 'nginx.piwik':
   user     => 'vagrant',
   group    => 'vagrant',
 }
+
+host { 'xhrof.piwik':
+  ip => "127.0.0.1",
+} 
+
+apache::vhost { 'xhprof.piwik':
+  docroot     => '/usr/share/php/xhprof_html',
+  priority    => '20',
+  port        => '80',
+  ssl         => false,
+  override    => 'All',
+  require     => Piwik::Apache['apache.piwik'],
+  logroot     => '/var/log/xhprof.piwik'
+}

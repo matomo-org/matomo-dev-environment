@@ -21,7 +21,7 @@ Need more information? Have a look here: http://piwik.org/blog/2012/08/get-start
 
 ### Usage
 
-Open "http://apache.piwik" or "http://nginx.piwik:8080" after installation. You'll see the [Piwik installation](http://piwik.org/docs/installation/#toc-the-5-minute-piwik-installation) screen.
+Open "http://apache.piwik" or "http://nginx.piwik:8080" after installation. You'll see the [Piwik installation](http://piwik.org/docs/installation/#toc-the-5-minute-piwik-installation) screen. XHProf is available under "http://xhprof.piwik".
 
 ### Installed Packages
  * PHP
@@ -33,6 +33,7 @@ Open "http://apache.piwik" or "http://nginx.piwik:8080" after installation. You'
  * Subversion
  * Git
  * Composer
+ * XHProf
 
 ### Troubleshooting
  * If you get file permission errors install latest VirtualBox Guest Additons: https://github.com/dotless-de/vagrant-vbguest
