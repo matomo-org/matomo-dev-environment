@@ -1,7 +1,7 @@
 Piwik Development Environment
 =====================
 
-This configuration makes it very easy to start with Piwik development or to give Piwik a try in your local environment. It'll setup a virtual machine including everything you need to run Piwik. 
+This configuration makes it very easy to start with Piwik development or to give Piwik a try in your local environment. It'll setup a virtual machine including everything you need to run Piwik. The Piwik project itself will be cloned into a shared/synced folder `www/piwik` which makes it easy to change files within your host IDE. You even do not need to run the VM to change something. 
 
 Need more information? Have a look here: http://piwik.org/blog/2012/08/get-started-with-piwik-development-with-puppet-and-vagrant/
 
@@ -35,7 +35,7 @@ Open "http://apache.piwik" or "http://nginx.piwik:8080" after installation. You'
  * Composer
 
 ### Troubleshooting
- * If you get file permission errors install VirtualBox Guest Additons: https://github.com/dotless-de/vagrant-vbguest
+ * If you get file permission errors install latest VirtualBox Guest Additons: https://github.com/dotless-de/vagrant-vbguest
 
 You'll find Piwik here: `/var/www/piwik` 
 
