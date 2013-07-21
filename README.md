@@ -23,6 +23,8 @@ Need more information? Have a look here: http://piwik.org/blog/2012/08/get-start
 
 Open "http://apache.piwik" or "http://nginx.piwik:8080" after installation. You'll see the [Piwik installation](http://piwik.org/docs/installation/#toc-the-5-minute-piwik-installation) screen. XHProf is available under "http://xhprof.piwik".
 
+MySQL listens to the external IP address. Use for instance `192.168.33.10` when trying to install Piwik.
+
 ### Installed Packages
  * PHP
  * PHP QA Tools (PHPUnit, PHPMD - PHP Mess Detector, PHP Depend, PHP CodeCoverage, PHP_CodeSniffer, ...)
@@ -38,7 +40,7 @@ Open "http://apache.piwik" or "http://nginx.piwik:8080" after installation. You'
 ### Troubleshooting
  * If you get file permission errors install latest VirtualBox Guest Additons: https://github.com/dotless-de/vagrant-vbguest
 
-You'll find Piwik here: `/var/www/piwik` 
+You'll find Piwik here: `/home/vagrant/www/piwik` 
 
 ### Issues
 Let us know if something is missing or going wrong. Just create a ticket here: [http://dev.piwik.org/trac](http://dev.piwik.org/trac)
