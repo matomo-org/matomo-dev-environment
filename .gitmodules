@@ -9,7 +9,7 @@
 	url = git://github.com/camptocamp/puppet-augeas
 [submodule "puppet/modules/common"]
 	path = puppet/modules/common
-	url = git://github.com/puppet-common/puppet-common
+	url = git://github.com/puppet-modules/puppet-common
 [submodule "puppet/modules/Firewall"]
 	path = puppet/modules/Firewall
 	url = git://github.com/puppetlabs/puppetlabs-firewall
