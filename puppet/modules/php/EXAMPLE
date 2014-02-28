@@ -1,0 +1,63 @@
+# Apache example
+class my_php {
+    php::module { [
+        'gearman', 'curl', 'gd', 'gmagick', 'igbinary',
+        'inotify', 'mcrypt', 'memcached', 'mogilefs', 'mysql',
+        'pecl-http', 'proctitle', 'tidy', 'xhprof', 'intl', 'imap',
+        'oauth', 'sphinx',
+        ]:
+        require => Apt::Sources_list['dotdeb-php53'],
+        notify  => Service['apache'],
+    }
+
+    php::module { 'redis':
+        ensure => absent,
+    }
+
+    php::module { 'xcache':
+        content => 'global/etc/php5/conf.d/',
+        require => Apt::Sources_list['dotdeb-php53'],
+        notify  => Service['apache'],
+    }
+
+    php::module { [ 'suhosin', 'xdebug', ]:
+        require => Apt::Sources_list['dotdeb-php53'],
+        notify  => Service['apache'],
+        source  => true,
+    }
+
+    php::conf { [ 'browscap', 'global', ]:
+        require => Apt::Sources_list['dotdeb-php53'],
+        notify  => Service['apache'],
+        source  => true,
+    }
+
+    php::conf { [ 'mysqli', 'pdo', 'pdo_mysql', ]:
+        require => Package['php-mysql'],
+        notify  => Service['apache'],
+    }
+
+    php::extra { 'lite_php_browscap':
+        require => Php::Conf['browscap'],
+        notify  => Service['apache'],
+        source  => true,
+    }
+}
+
+
+# FPM example
+class my_fpm_php {
+    php::module { [ 'curl', 'gd', 'mcrypt', 'mysql', 'suhosin', ]:
+        notify => Class['php::fpm::service'],
+    }
+
+    php::module { [ 'memcache', 'apc', ]:
+        notify => Class['php::fpm::service'],
+        source => true,
+    }
+
+    # Add a pool definition
+    php::fpm::pool { 'my_pool':
+        source => 'puppet:///files/path/to/your/pool',
+    }
+}
