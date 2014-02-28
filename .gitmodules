@@ -25,9 +25,6 @@
 [submodule "puppet/modules/pear"]
 	path = puppet/modules/pear
 	url = git://github.com/treehouseagency/puppet-pear
-[submodule "puppet/modules/php"]
-	path = puppet/modules/php
-	url = git://github.com/Mayflower/puppet-php
 [submodule "puppet/modules/phpqatools"]
 	path = puppet/modules/phpqatools
 	url = git://github.com/rafaelfelix/puppet-phpqatools
