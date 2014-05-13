@@ -37,5 +37,7 @@ class piwik::base {
 
   package { 'cutycapt': ensure => latest, require => Exec['base_apt-get_update'] }
 
+  package { 'unzip': ensure => latest, require => Exec['base_apt-get_update'] }
+
   include git
 }
