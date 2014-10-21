@@ -25,9 +25,17 @@ class piwik::base {
 
   package { 'facter': ensure => latest, require => Exec['base_apt-get_update'] }
 
+  package { 'dnsutils': ensure => latest, require => Exec['base_apt-get_update'] }
+
   package { 'sendmail': ensure => latest, require => Exec['base_apt-get_update'] }
 
   package { 'strace': ensure => latest, require => Exec['base_apt-get_update'] }
+
+  package { 'telnet': ensure => latest, require => Exec['base_apt-get_update'] }
+
+  package { 'nmap': ensure => latest, require => Exec['base_apt-get_update'] }
+
+  package { 'net-tools': ensure => latest, require => Exec['base_apt-get_update'] }
 
   package { 'tcpdump': ensure => latest, require => Exec['base_apt-get_update'] }
 
@@ -38,6 +46,12 @@ class piwik::base {
   package { 'cutycapt': ensure => latest, require => Exec['base_apt-get_update'] }
 
   package { 'unzip': ensure => latest, require => Exec['base_apt-get_update'] }
+
+  package { 'htop': ensure => latest, require => Exec['base_apt-get_update'] }
+
+  package { 'inetutils-ping': ensure => latest, require => Exec['base_apt-get_update'] }
+
+  package { 'netcat': ensure => latest, require => Exec['base_apt-get_update'] }
   
   package { 'openjdk-7-jre-headless': ensure => latest, require => Exec['base_apt-get_update'] }
 

@@ -9,7 +9,6 @@
 # $root_password::  A password for the MySQL root user
 # $username::       If defined, a MySQL user with this name will be created 
 # $password::       The MySQL user's password
-# $ipaddress::      IP address MySQL should listen to
 # 
 # == Requires: 
 # 
@@ -20,42 +19,57 @@
 #  class {'piwik::db':
 #    root_password => '123456',
 #    username => 'piwik',
-#    password => 'piwik',
-#    ipadress => '127.0.0.1',
+#    password => 'piwik'
 #  }
 #
 class piwik::db(
   $username      = $piwik::params::db_user,
   $password      = $piwik::params::db_password,
   $root_password = $piwik::params::db_password,
-  $ipaddress     = $ipaddress_eth1
 ) {
 
-  class { 'mysql': }
-
-  class { 'mysql::server':
-    config_hash => { 'root_password' => $root_password, 'bind_address' => $ipaddress }
+  if $ipaddress_eth1 {
+      $ipaddress = $ipaddress_eth1
+  } elsif $ipaddress_eth0 {
+      $ipaddress = $ipaddress_eth0
+  } else {
+      $ipaddress = "127.0.0.1"
   }
 
-  database_user { 'root@%':
+  $override_options = {
+    'mysqld' => {
+      'bind_address' => $ipaddress,
+    }
+  }
+
+  class { '::mysql::server':
+    root_password    => $root_password,
+    override_options => $override_options
+  }
+
+  mysql_user { 'root@%':
    password_hash => mysql_password($root_password),
   }
 
-  database_grant { 'root@%':
+  mysql_grant { 'root@%':
    privileges => ['all'] ,
+   table      => '*.*',
+    user => $username,
   }
 
-  database_user { $username:
+  mysql_user { $username:
     ensure        => present,
     password_hash => mysql_password($password),
     provider      => 'mysql',
     require       => Class['mysql::server'],
   }
 
-  database_grant { $username:
+  mysql_grant { "${username}*/*":
     privileges => ['all'],
     provider   => 'mysql',
-    require    => Database_user[$username],
+    require    => Mysql_user[$username],
+    table      => '*.*',
+    user => $username,
   }
 
   include mysql::server::mysqltuner
