@@ -1,3 +1,4 @@
 vagrantconfig_local.yaml
 .DS_Store
 .vagrant
+.idea

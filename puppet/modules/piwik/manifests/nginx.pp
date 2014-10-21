@@ -42,34 +42,32 @@ define piwik::nginx (
   } 
 
   php::fpm::pool { "${name}":
-    pool_prefix          => $docroot,
+    chdir          => $docroot,
     user                 => $user,
     group                => $group,
-    listen_type          => 'socket',
     listen               => $socket_path,
-    socket_owner         => $user,
-    socket_group         => $group,
-    socket_mode          => '0660',
+    listen_owner         => $user,
+    listen_group         => $group,
+    listen_mode          => '0660',
     catch_workers_output => 'yes',
     require              => [ Host[$name], Piwik::Repo['piwik_repo_setup'], Class['piwik::php'] ]
   }
 
-  $php_locations = {
-    "php-rewrite-${name}" => {
-      location  => '~ \.php$',
-      vhost     => $name,
-      try_files => '$uri =404',
-      fastcgi   => "unix:${socket_path}",
-    }
-  }
-
-  include nginx
+  class { 'nginx': }
 
   nginx::resource::vhost { "${name}":
     ensure      => present,
     www_root    => $docroot,
-    listen_port => $port,
-    locations   => $php_locations
+    listen_port => $port
+  }
+
+  nginx::resource::location { "${name}":
+    ensure      => present,
+    www_root    => $docroot,
+    index_files => ['index.php'],
+    location    => '~ \.php$',
+    fastcgi     => "unix:${socket_path}",
+    vhost => $name
   }
 
 }

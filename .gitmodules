@@ -19,15 +19,6 @@
 [submodule "puppet/modules/mysql"]
 	path = puppet/modules/mysql
 	url = git://github.com/puppetlabs/puppetlabs-mysql
-[submodule "puppet/modules/nginx"]
-	path = puppet/modules/nginx
-	url = git://github.com/Mayflower/puppetlabs-nginx
-[submodule "puppet/modules/pear"]
-	path = puppet/modules/pear
-	url = git://github.com/treehouseagency/puppet-pear
-[submodule "puppet/modules/phpqatools"]
-	path = puppet/modules/phpqatools
-	url = git://github.com/rafaelfelix/puppet-phpqatools
 [submodule "puppet/modules/stdlib"]
 	path = puppet/modules/stdlib
 	url = git://github.com/puppetlabs/puppetlabs-stdlib
@@ -37,3 +28,18 @@
 [submodule "puppet/modules/concat"]
 	path = puppet/modules/concat
 	url = https://github.com/ripienaar/puppet-concat.git
+[submodule "puppet/modules/nginx"]
+	path = puppet/modules/nginx
+	url = git://github.com/jfryman/puppet-nginx.git
+[submodule "puppet/modules/php"]
+	path = puppet/modules/php
+	url = git@github.com:Mayflower/puppet-php.git
+[submodule "puppet/modules/inifile"]
+	path = puppet/modules/inifile
+	url = git@github.com:puppetlabs/puppetlabs-inifile.git
+[submodule "puppet/modules/zypprepo"]
+	path = puppet/modules/zypprepo
+	url = git@github.com:deadpoint/puppet-zypprepo.git
+[submodule "puppet/modules/module_data"]
+	path = puppet/modules/module_data
+	url = git@github.com:ripienaar/puppet-module-data.git
