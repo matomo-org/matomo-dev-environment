@@ -1,6 +1,0 @@
-# Don't change this config!
-
-# Use vagrantconfig_local.yaml to override these settings instead.
-
-db_password: secure
-db_username: piwik@localhost 
