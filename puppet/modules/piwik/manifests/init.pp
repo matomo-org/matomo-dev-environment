@@ -75,7 +75,7 @@ class piwik(
   }
 
   exec { 'run_piwik_composer':
-    command => "composer.phar update",
+    command => "php composer.phar update",
     cwd     => $directory,
     require => [ Piwik::Repo['piwik_repo_setup'], Class['piwik::php'] ],
   }
