@@ -42,7 +42,7 @@ define piwik::nginx (
   } 
 
   php::fpm::pool { "${name}":
-    chdir          => $docroot,
+    chdir                => $docroot,
     user                 => $user,
     group                => $group,
     listen               => $socket_path,

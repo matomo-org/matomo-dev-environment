@@ -1,6 +1,14 @@
-FROM ubuntu:14.04
+FROM phusion/baseimage:0.9.15
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV HOME /root
+
+RUN locale-gen en_US.UTF-8
+ENV LANG       en_US.UTF-8
+ENV LC_ALL     en_US.UTF-8
+
+CMD ["/sbin/my_init"]
+
 RUN apt-get update
 
 RUN apt-get install -y openssh-server && \
@@ -8,6 +16,8 @@ RUN apt-get install -y openssh-server && \
     echo 'root:root' |chpasswd
 RUN sed -i "s/session.*required.*pam_loginuid.so/#session    required     pam_loginuid.so/" /etc/pam.d/sshd
 RUN sed -i "s/PermitRootLogin without-password/#PermitRootLogin without-password/" /etc/ssh/sshd_config
+
+RUN /usr/bin/workaround-docker-2267
 
 # Puppet
 RUN apt-get -y install ruby
@@ -20,5 +30,11 @@ RUN export FACTER_db_password="secure"
 RUN puppet apply --modulepath=/tmp/puppet/modules /tmp/puppet/site.pp
 
 ADD www /var/www
+
+# RUN chown -R www-data:www-data /var/www
+# RUN chmod -R 0755 /var/www
+
+EXPOSE 80
+EXPOSE 8080
 
 ENTRYPOINT ["/bin/bash"]

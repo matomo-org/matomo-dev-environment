@@ -51,10 +51,10 @@ class piwik::db(
    password_hash => mysql_password($root_password),
   }
 
-  mysql_grant { 'root@%':
+  mysql_grant { 'root@%/*.*':
    privileges => ['all'] ,
    table      => '*.*',
-    user => $username,
+   user       => 'root@%',
   }
 
   mysql_user { $username:
@@ -64,12 +64,12 @@ class piwik::db(
     require       => Class['mysql::server'],
   }
 
-  mysql_grant { "${username}*/*":
+  mysql_grant { "${username}/*.*":
     privileges => ['all'],
     provider   => 'mysql',
     require    => Mysql_user[$username],
     table      => '*.*',
-    user => $username,
+    user       => $username,
   }
 
   include mysql::server::mysqltuner
