@@ -30,7 +30,12 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provider :aws do |aws, override|
-    aws.keypair_name = "testing"
+    aws.keypair_name = CONF['aws_keypair_name']
+    aws.access_key_id = CONF['aws_access_key_id']
+    aws.secret_access_key = CONF['aws_secret_access_key']
+    override.vm.box = "ubuntu_aws"
+    override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+    override.vm.synced_folder "../.", "/vagrant", id: "vagrant-root"
     override.ssh.private_key_path = "~/.ssh/testing.pem"
     aws.instance_type = "c3.large"
     override.ssh.username = "ubuntu"

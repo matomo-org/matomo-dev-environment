@@ -1,4 +1,4 @@
-FROM phusion/baseimage:0.9.15
+FROM ubuntu-upstart:14.04
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /root
@@ -17,8 +17,6 @@ RUN apt-get install -y openssh-server && \
 RUN sed -i "s/session.*required.*pam_loginuid.so/#session    required     pam_loginuid.so/" /etc/pam.d/sshd
 RUN sed -i "s/PermitRootLogin without-password/#PermitRootLogin without-password/" /etc/ssh/sshd_config
 
-RUN /usr/bin/workaround-docker-2267
-
 # Puppet
 RUN apt-get -y install ruby
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
@@ -28,6 +26,7 @@ ADD hiera.yaml /etc/puppet/hiera.yaml
 RUN export FACTER_db_username="piwik@localhost"
 RUN export FACTER_db_password="secure"
 RUN puppet apply --modulepath=/tmp/puppet/modules /tmp/puppet/site.pp
+RUN apt-get clean
 
 ADD www /var/www
 

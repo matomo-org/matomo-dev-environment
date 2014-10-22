@@ -10,7 +10,7 @@ Need more information? Have a look here: http://piwik.org/blog/2012/08/get-start
 This is work in progress
 
 #### Available boxes
- * Ubuntu 14.04
+ * Ubuntu 12.04
  
 #### Installation
  1 Install [Docker](https://www.docker.com/)
@@ -38,10 +38,7 @@ This is work in progress
 
 ##### With Amazon AWS
  4. `vagrant plugin install vagrant-aws`
- 5. ```
-export AWS_ACCESS_KEY="AKXXXXXXXXXXXXXXX"
-export AWS_SECRET_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-``` 
+ 5. Provide AWS keyname, access key & secret key in `vagrantconfig_local.yaml`
  6. `vagrant up --provider=aws`
  
 ### Usage

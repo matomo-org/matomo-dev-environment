@@ -2,4 +2,9 @@
 
 # password is used for root user as well
 db_password: secure
-db_username: piwik@localhost 
+db_username: piwik@localhost
+
+# in case you are using AWS
+aws_access_key_id: "AKXXXXXXXXXXXXXXX"
+aws_secret_access_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+aws_keypair_name: "keypair-name"
