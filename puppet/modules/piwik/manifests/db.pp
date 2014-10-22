@@ -44,7 +44,8 @@ class piwik::db(
 
   class { '::mysql::server':
     root_password    => $root_password,
-    override_options => $override_options
+    override_options => $override_options,
+    service_provider => "init"
   }
 
   mysql_user { 'root@%':

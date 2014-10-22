@@ -10,7 +10,7 @@ Need more information? Have a look here: http://piwik.org/blog/2012/08/get-start
 This is work in progress
 
 #### Available boxes
- * Ubuntu 12.04
+ * Ubuntu 14.04
  
 #### Installation
  1 Install [Docker](https://www.docker.com/)
