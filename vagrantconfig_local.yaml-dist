@@ -8,3 +8,4 @@ db_username: piwik@localhost
 aws_access_key_id: "AKXXXXXXXXXXXXXXX"
 aws_secret_access_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 aws_keypair_name: "keypair-name"
+aws_pem_file: "~/.ssh/file.pem"

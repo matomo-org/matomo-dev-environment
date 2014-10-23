@@ -11,12 +11,17 @@
 #  include piwik::user
 #
 class piwik::user {
+  $username = "${piwik::params::user}"
     
   # user for apache / nginx
-  user { "${piwik::params::user}":
-    ensure  => present,
-    comment => $piwik::params::user,
-    shell   => '/bin/false',
+  if $username != $id {
+    if ! defined(User[$username]) {
+        user { $username:
+          ensure  => present,
+          comment => $username
+        }
+    }
+
   }
 
 }

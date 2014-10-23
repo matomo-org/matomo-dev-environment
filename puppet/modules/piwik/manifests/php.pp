@@ -17,7 +17,7 @@ class piwik::php {
     manage_repos => true,
     fpm          => true,
     dev          => true,
-    composer     => true,
+    composer     => false,
     pear         => true,
     phpunit      => false,
     extensions   => {}

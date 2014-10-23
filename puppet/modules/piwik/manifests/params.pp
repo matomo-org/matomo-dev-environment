@@ -11,12 +11,10 @@
 # This class file is not called directly
 #
 class piwik::params {
-  $user    = 'www-data'
-  $group   = 'www-data'
+  $user    = $ssh_username
+  $group   = $ssh_username
   $docroot = '/var/www/piwik'
 
-  $repository     = 'git'
-  $svn_repository = 'http://dev.piwik.org/svn/'
   $git_repository = 'https://github.com/piwik/piwik.git'
   $piwik_version  = 'trunk'
 

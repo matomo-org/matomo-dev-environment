@@ -55,5 +55,7 @@ class piwik::base {
   
   package { 'openjdk-7-jre-headless': ensure => latest, require => Exec['base_apt-get_update'] }
 
+  package { 'xmlstarlet': ensure => latest, require => Exec['base_apt-get_update'] }
+
   include git
 }

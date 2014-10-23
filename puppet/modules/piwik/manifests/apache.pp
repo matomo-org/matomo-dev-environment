@@ -50,15 +50,14 @@ define piwik::apache (
   }
 
   include apache::mod::php
-  # TODO move this to a class and include it. This allows us to define multiple apache hosts
-  apache::mod {'vhost_alias': }
-  apache::mod {'rewrite': }
+  include apache::mod::vhost_alias
+  include apache::mod::rewrite
 
   apache::vhost { "${name}":
     priority   => $priority,
     vhost_name => '_default_',
     port       => $port,
-    override   => 'All',
+    override   => ['All'],
     docroot    => $docroot,
     require    => [ Host[$name], Piwik::Repo['piwik_repo_setup'], Class['piwik::php'] ],
     servername => $name

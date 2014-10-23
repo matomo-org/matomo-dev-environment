@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM phusion/baseimage:0.9.15
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV HOME /root
@@ -10,6 +10,7 @@ ENV LC_ALL     en_US.UTF-8
 CMD ["/sbin/my_init"]
 
 RUN apt-get update
+RUN /usr/bin/workaround-docker-2267
 
 RUN apt-get install -y openssh-server && \
     mkdir -p /var/run/sshd && \
@@ -25,6 +26,7 @@ ADD puppet /tmp/puppet
 ADD hiera.yaml /etc/puppet/hiera.yaml
 RUN export FACTER_db_username="piwik@localhost"
 RUN export FACTER_db_password="secure"
+RUN export FACTER_ssh_username="ubuntu"
 RUN puppet apply --modulepath=/tmp/puppet/modules /tmp/puppet/site.pp
 RUN apt-get clean
 
@@ -35,5 +37,3 @@ ADD www /var/www
 
 EXPOSE 80
 EXPOSE 8080
-
-ENTRYPOINT ["/bin/bash"]
