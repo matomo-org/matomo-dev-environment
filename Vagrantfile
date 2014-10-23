@@ -19,8 +19,6 @@ Vagrant.configure("2") do |config|
   config.vm.box = "trusty64"
   config.vm.box_url = "https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box"
 
-  $SSH_USERNAME = 'ubuntu'
-
   config.vm.synced_folder "puppet/files", "/etc/puppet/files", :nfs => false
   config.vm.network :private_network, ip: "192.168.33.10"
     config.ssh.forward_agent = true
@@ -65,7 +63,7 @@ SCRIPT
     puppet.facter = [
         ['db_username',  CONF['db_username']],
         ['db_password',  CONF['db_password']],
-        ['ssh_username', $SSH_USERNAME],
+        ['ssh_username', CONF['ssh_username']],
     ]
   end
 end

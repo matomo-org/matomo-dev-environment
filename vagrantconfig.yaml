@@ -4,7 +4,11 @@
 db_password: secure
 db_username: piwik@localhost
 
+# set to "ubuntu" in case provider is aws
+ssh_username: vagrant
+
 # in case you are using AWS
 aws_access_key_id: "AKXXXXXXXXXXXXXXX"
 aws_secret_access_key: "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 aws_keypair_name: "keypair-name"
+aws_pem_file: "~/.ssh/file.pem"
