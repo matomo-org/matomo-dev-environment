@@ -28,6 +28,7 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     v.customize ["modifyvm", :id, "--memory", 1024]
     v.customize ["modifyvm", :id, "--name", "piwik-dev"]
+    v.customize ["setextradata", :id, "--VBoxInternal2/SharedFoldersEnableSymlinksCreate/v-root", "1"]
   end
 
   config.vm.provider :aws do |aws, override|
@@ -39,7 +40,7 @@ Vagrant.configure("2") do |config|
     override.ssh.private_key_path = CONF['aws_pem_file']
     aws.instance_type = "c3.large"
     aws.security_groups = ['default']
-    override.ssh.username = "ubuntu"
+    override.ssh.username = CONF['ssh_username']
     aws.ami = "ami-9eaa1cf6"
     aws.tags = {
       'Name' => 'Piwik Testing',
@@ -50,6 +51,8 @@ Vagrant.configure("2") do |config|
   if [[ $(which puppet) != '/usr/local/bin/puppet' ]]; then
     sudo apt-get -y install ruby
     sudo gem install puppet
+    sudo gem install hiera
+    sudo gem install hiera-puppet
   fi
 SCRIPT
   config.vm.provision :shell, :inline => $provision_script

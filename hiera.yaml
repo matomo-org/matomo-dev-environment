@@ -1,22 +1,9 @@
-php::extensions:
-  json: {}
-  mysql: {}
-  curl: {}
-  gd: {}
-  sqlite: {}
-  mcrypt: {}
-  imagick: {}
-  uuid: {}
-  recode: {}
-  cgi: {}
-  snmp: {}
-  xdebug: {}
-  memcached:
-    provider: pecl
-    header_packages:
-      - libmemcached-dev
-  apc:
-    package_prefix: php-
-    settings:
-      apc.stat: 1
-      apc.stat_ctime: 1
+---
+:backends:
+  - yaml
+
+:hierarchy:
+  - "php"
+
+:yaml:
+  :datadir: '/vagrant/hiera'

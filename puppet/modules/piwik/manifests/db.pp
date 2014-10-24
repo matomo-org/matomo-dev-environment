@@ -28,17 +28,13 @@ class piwik::db(
   $root_password = $piwik::params::db_password,
 ) {
 
-  if $ipaddress_eth1 {
-      $ipaddress = $ipaddress_eth1
-  } elsif $ipaddress_eth0 {
-      $ipaddress = $ipaddress_eth0
-  } else {
-      $ipaddress = "127.0.0.1"
-  }
-
   $override_options = {
     'mysqld' => {
-      'bind_address' => $ipaddress,
+      'bind_address' => "0.0.0.0",
+      'local-infile' => ""
+    },
+    'mysql' => {
+       'local-infile' => ""
     }
   }
 

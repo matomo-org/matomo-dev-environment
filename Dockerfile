@@ -23,6 +23,7 @@ RUN apt-get -y install ruby
 RUN echo "gem: --no-ri --no-rdoc" > ~/.gemrc
 RUN gem install puppet
 ADD puppet /tmp/puppet
+ADD hiera /vagrant/hiera
 ADD hiera.yaml /etc/puppet/hiera.yaml
 RUN export FACTER_db_username="piwik@localhost"
 RUN export FACTER_db_password="secure"

@@ -1,0 +1,18 @@
+---
+php::extensions:
+  json: {}
+  mysql: {}
+  curl: {}
+  gd: {}
+  sqlite: {}
+  mcrypt: {}
+  imagick: {}
+  recode: {}
+  cgi: {}
+  xdebug: {}
+  memcached: {}
+  apc:
+    package_prefix: php-
+    settings:
+      apc.stat: 1
+      apc.stat_ctime: 1

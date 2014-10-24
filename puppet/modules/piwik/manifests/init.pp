@@ -70,5 +70,6 @@ class piwik(
     unless  => 'which composer.phar',
   }
 
+  # do composer.phar install
 
 }
