@@ -1,0 +1,8 @@
+Files are located in "www/piwik"
+Piwik user:pass is "root:secure"
+MySQL user:pass is "root:secure"
+To connect to MySQL execute "mysql -u root -psecure"
+
+To restart Apache: "sudo service apache2 restart"
+To restart PHP-FPM: "sudo /etc/init.d/php-fpm restart"
+To restart MySQL: "sudo service mysql restart"
