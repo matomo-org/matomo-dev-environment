@@ -51,6 +51,8 @@ class piwik::base {
 
   package { 'unzip': ensure => latest, require => Exec['base_apt-get_update'] }
 
+  package { 'iotop': ensure => latest, require => Exec['base_apt-get_update'] }
+
   package { 'htop': ensure => latest, require => Exec['base_apt-get_update'] }
 
   package { 'inetutils-ping': ensure => latest, require => Exec['base_apt-get_update'] }
