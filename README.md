@@ -40,6 +40,7 @@ This is work in progress
  4. `vagrant plugin install vagrant-aws`
  5. Provide AWS keyname, access key & secret key in `vagrantconfig_local.yaml`
  6. `vagrant up --provider=aws`
+ 7. Execute `puppet/files/setup.sh` once (we should add this to Puppet)
  
 ### Usage
 

@@ -41,8 +41,6 @@ class piwik::base {
 
   package { 'wget': ensure => latest, require => Exec['base_apt-get_update'] }
 
-  package { 'phantomjs': ensure => latest, require => Exec['base_apt-get_update'] }
-
   package { 'curl': ensure => latest, require => Exec['base_apt-get_update'] }
 
   package { 'cutycapt': ensure => latest, require => Exec['base_apt-get_update'] }
