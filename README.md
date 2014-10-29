@@ -64,7 +64,3 @@ MySQL listens to the external IP address. Use for instance `192.168.33.10` when 
  * If you get file permission errors install latest VirtualBox Guest Additons: https://github.com/dotless-de/vagrant-vbguest
 
 You'll find Piwik here: `/home/vagrant/www/piwik` 
-
-### Issues
-Let us know if something is missing or going wrong. Just create a ticket here: [https://github.com/piwik/piwik-dev-environment/issues](https://github.com/piwik/piwik-dev-environment/issues)
-
