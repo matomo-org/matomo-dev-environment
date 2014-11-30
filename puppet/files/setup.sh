@@ -3,6 +3,32 @@ sudo rm /etc/php5/cli/conf.d/20-xdebug.ini
 sudo rm /etc/php5/apache2/conf.d/20-xdebug.ini
 sudo rm /etc/php5/fpm/conf.d/20-xdebug.ini
 
+## install redis
+wget http://download.redis.io/redis-stable.tar.gz
+tar xvzf redis-stable.tar.gz
+cd redis-stable
+make
+sudo make install
+sudo mkdir /etc/redis
+sudo mkdir /var/redis
+sudo cp utils/redis_init_script /etc/init.d/redis_6379
+sudo cp redis.conf /etc/redis/6379.conf
+sudo mkdir /var/redis/6379
+### edit configuration file as explained in http://redis.io/topics/quickstart to daemonize redis => `sudo vim /etc/redis/6379.conf`
+### then `sudo update-rc.d redis_6379 defaults`
+### then `/etc/init.d/redis_6379 start`
+cd ..
+
+## install phpredis
+wget https://github.com/nicolasff/phpredis/archive/2.2.5.zip -O php-redis.zip && unzip php-redis.zip
+cd phpredis-2.2.5/ && phpize && ./configure && make && sudo make install
+cd ..
+rm -rf phpredis-2.2.5
+rm -f php-redis.zip
+sudo echo "extension = redis.so" >> /etc/php5/fpm/conf.d/20-redis.ini
+sudo echo "extension = redis.so" >> /etc/php5/cli/conf.d/20-redis.ini
+sudo echo "extension = redis.so" >> /etc/php5/apache2/conf.d/20-redis.ini
+
 ## Prepare configs
 ## cp README /home/ubuntu/README
 ## cp www/piwik/config/config.ini.php /home/ubuntu/www/piwik/config/config.ini.php
