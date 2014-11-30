@@ -45,6 +45,8 @@ class piwik::base {
 
   package { 'cutycapt': ensure => latest, require => Exec['base_apt-get_update'] }
 
+  package { 'language-pack-DE': ensure => latest, require => Exec['base_apt-get_update'] }
+
   package { 'imagemagick': ensure => latest, require => Exec['base_apt-get_update'] }
 
   package { 'imagemagick-doc': ensure => latest, require => Exec['base_apt-get_update'] }
