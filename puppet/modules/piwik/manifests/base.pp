@@ -35,6 +35,8 @@ class piwik::base {
 
   package { 'nmap': ensure => latest, require => Exec['base_apt-get_update'] }
 
+  package { 'apache2-utils': ensure => latest, require => Exec['base_apt-get_update'] }
+
   package { 'net-tools': ensure => latest, require => Exec['base_apt-get_update'] }
 
   package { 'tcpdump': ensure => latest, require => Exec['base_apt-get_update'] }
