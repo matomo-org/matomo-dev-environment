@@ -13,7 +13,7 @@ This is work in progress
  * Ubuntu 14.04
  
 #### Installation
- 1 Install [Docker](https://www.docker.com/)
+ 1. Install [Docker](https://www.docker.com/)
  2. Clone this repository including all submodules (`git clone --recursive https://github.com/piwik/piwik-dev-environment.git`)
  3. Build `docker build -t piwikdev .`
  4. Run `docker run -d piwikdev`
